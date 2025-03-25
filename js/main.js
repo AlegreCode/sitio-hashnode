@@ -40,6 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 const posts = data.data.user.posts.nodes;
                 const pageInfo = data.data.user.posts.pageInfo;
+                const totalDocs = data.data.user.posts.totalDocuments;
+                const totalPages = Math.ceil(totalDocs / 3); // 3 is the pageSize
                 const postContainer = document.getElementById("grid_articles");
                 
                 postContainer.innerHTML = posts.map(post => `
@@ -64,7 +66,14 @@ document.addEventListener("DOMContentLoaded", function () {
                             onclick="changePage(${pageInfo.previousPage})">
                             Previous
                         </button>
-                        <span class="text-gray-700">Page ${currentPage}</span>
+                        ${Array.from({ length: totalPages }, (_, i) => i + 1)
+                            .map(pageNum => `
+                                <button 
+                                    class="px-4 py-2 ${currentPage === pageNum ? 'bg-blue-500 text-white' : 'bg-gray-200'} rounded-lg hover:bg-gray-300 cursor-pointer"
+                                    onclick="changePage(${pageNum})">
+                                    ${pageNum}
+                                </button>
+                            `).join('')}
                         <button 
                             class="px-4 py-2 bg-blue-500 text-white rounded ${!pageInfo.hasNextPage ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:bg-blue-600'}"
                             ${!pageInfo.hasNextPage ? 'disabled' : ''}
