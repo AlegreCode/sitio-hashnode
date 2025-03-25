@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 postContainer.innerHTML = posts.map(post => `
                     <a href="${post.url}" target="_blank">
                         <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                            <img src="${post.coverImage.url}" alt="Cover Image 1" class="w-full h-auto object-cover">
+                            <img src="${post.coverImage.url}" alt="Cover Image 1" class="w-full h-48 object-cover aspect-[16/9]">
                             <div class="p-4">
                                 <h2 class="text-xl font-bold mb-2">${post.title}</h2>
                                 <p class="text-gray-600 text-sm mb-2">${post.author.username}</p>
