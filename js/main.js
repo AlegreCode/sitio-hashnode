@@ -57,16 +57,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Add paginator
                 const paginator = `
-                    <div class="flex justify-center items-center mt-6 gap-4">
+                    <div class="col-span-full flex justify-center items-center mt-6 gap-4">
                         <button 
-                            class="px-4 py-2 bg-blue-500 text-white rounded ${!pageInfo.hasPreviousPage ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'}"
+                            class="px-4 py-2 bg-blue-500 text-white rounded ${!pageInfo.hasPreviousPage ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:bg-blue-600'}"
                             ${!pageInfo.hasPreviousPage ? 'disabled' : ''}
                             onclick="changePage(${pageInfo.previousPage})">
                             Previous
                         </button>
                         <span class="text-gray-700">Page ${currentPage}</span>
                         <button 
-                            class="px-4 py-2 bg-blue-500 text-white rounded ${!pageInfo.hasNextPage ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'}"
+                            class="px-4 py-2 bg-blue-500 text-white rounded ${!pageInfo.hasNextPage ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:bg-blue-600'}"
                             ${!pageInfo.hasNextPage ? 'disabled' : ''}
                             onclick="changePage(${pageInfo.nextPage})">
                             Next
